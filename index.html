@@ -4,8 +4,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Zuhaz.me</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+      body {
+        background-color: #000a12;
+        color: white;
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+      h1 {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        text-align: center;
+        line-height: 100px;
+        background: linear-gradient(90deg, transparent, white, transparent);
+        background-size: 200%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: shine 2s linear infinite;
+        cursor: pointer;
+      }
+      @keyframes shine {
+        0% {
+          background-position: 200%;
+        }
+        100% {
+          background-position: -200%;
+        }
+      }
+    </style>
   </head>
   <body>
-    <h1>Hello friends</h1>
+    <h1>ok</h1>
   </body>
 </html>
