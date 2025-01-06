@@ -4,43 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Zuhaz.me</title>
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
-      body {
-        background-color: #000a12;
-        color: white;
-        font-family: "Plus Jakarta Sans", sans-serif;
-      }
-      h1 {
-        width: 100px;
-        height: 100px;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        margin: auto;
-        text-align: center;
-        line-height: 100px;
-        background: linear-gradient(90deg, transparent, white, transparent);
-        background-size: 200%;
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        animation: shine 2s linear infinite;
-        cursor: pointer;
-      }
-      @keyframes shine {
-        0% {
-          background-position: 200%;
-        }
-        100% {
-          background-position: -200%;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
   </head>
   <body>
-    <h1>Zuhaz</h1>
+    <div class="main_container">
+      <h2 id="title" class="title hidden-element">Zuhaz</h2>
+      <div class="title-underline hidden-element"></div>
+      <div class="about-me-box hidden-element">
+        <p id="about-me-text"></p>
+      </div>
+      <div id="social_icons" class="social_icons hidden-element">
+        <a href="https://fiverr.com/zuhaz_t" target="_blank" class="social-link fiverr hidden-element" data-tooltip="@zuhaz_t">
+          <span class="iconify fiverr" data-icon="jam:fiverr-circle" data-width="32" data-height="32"></span>
+        </a>
+        <a href="https://github.com/zuhaz" target="_blank" class="social-link github hidden-element" data-tooltip="@zuhaz">
+          <span class="iconify github" data-icon="mdi:github-circle" data-width="32" data-height="32"></span>
+        </a>
+        <a href="https://www.linkedin.com/in/muhammad-zuhaz-talal-07676b204" target="_blank" class="social-link linkedin hidden-element" data-tooltip="muhammad-zuhaz-talal-07676b204/">
+          <span class="iconify linkedin" data-icon="jam:linkedin-circle" data-width="32" data-height="32"></span>
+        </a>
+        <a href="https://discord.com/@realzuhaz" target="_blank" class="social-link discord hidden-element" data-tooltip="@realzuhaz">
+          <span class="iconify discord" data-icon="mdi:discord" data-width="32" data-height="32"></span>
+        </a>
+      </div>
+    </div>
+    
+    <div class="light" id="light" data-toggled="false"></div>
+    <div id="tooltip" class="tooltip">Light toggled</div>
+    <canvas id="particleCanvas" class="particle-canvas"></canvas>
+    <script src="script.js"></script>
   </body>
 </html>

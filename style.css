@@ -1,0 +1,291 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+* {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: url(https://cur.cursors-4u.net/others/oth-3/oth299.cur), auto !important;
+  overflow: inherit;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  color: white;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  box-sizing: border-box;
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+}
+body.loaded {
+  opacity: 1;
+}
+.hidden-element {
+  color: #000;
+}
+.main_container {
+  height: 100%;
+  width: fit-content;
+  top: 0;
+  position: relative;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+  display: block;
+  justify-content: center;
+  align-items: center;
+}
+.main_container h2 {
+  font-size: 15rem;
+  margin-bottom: 10px; 
+}
+.light-on {
+  color: #fff;
+}
+.visible-element {
+  color: #fff;
+}
+.main_container .social_icons {
+  text-align: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 1.5rem;
+  font-weight: 100;
+  text-decoration: none;
+}
+.light {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at var(--x) var(--y),
+    transparent 10%,
+    rgba(0, 0, 0, 0.95) 15%
+  );
+  transition: background-color 0.3s ease, transform 0.3s ease; 
+}
+.light:hover {
+  background-color: rgba(255, 255, 255, 0.8); 
+  transform: scale(1.05); 
+}
+.tooltip {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  border-radius: 5px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.tooltip.visible {
+  visibility: visible;
+  opacity: 1;
+}
+.social-link {
+  margin: 0 5px;
+  text-decoration: none;
+  transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  animation: float 4s ease-in-out infinite;
+  position: relative;
+}
+.social-link:nth-child(2) {
+  animation-delay: -1s;
+}
+.social-link:nth-child(3) {
+  animation-delay: -2s;
+}
+.social-link:nth-child(4) {
+  animation-delay: -3s;
+}
+.social-link:hover {
+  transform: scale(1.2);
+}
+.social-link .iconify {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+.social-link:hover .iconify {
+  transform: rotate(15deg);
+}
+.social-link:hover .iconify.fiverr {
+  color: #1dbf73;
+}
+.social-link:hover .iconify.github {
+  color: #6e5494;
+}
+.social-link:hover .iconify.linkedin {
+  color: #0077b5;
+}
+.social-link:hover .iconify.discord {
+  color: #7289da;
+}
+.social-link::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s, transform 0.2s, background-color 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+.social-link:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-5px);
+}
+.social-link.fiverr:hover::after {
+  background-color: #1dbf73;
+  color: white;
+}
+.social-link.github:hover::after {
+  background-color: #6e5494;
+  color: white;
+}
+.social-link.linkedin:hover::after {
+  background-color: #0077b5;
+  color: white;
+}
+.social-link.discord:hover::after {
+  background-color: #7289da;
+  color: white;
+}
+.particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1000;
+}
+.title {
+  transition: text-shadow 0.3s ease;
+}
+@keyframes float {
+  0%, 100% { transform: translate(var(--x), var(--y)); }
+  50% { transform: translate(calc(var(--x) + 10px), calc(var(--y) - 10px)); }
+}
+.title-underline {
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  width: 80%; 
+  height: 2px;
+  background-color: #fff;
+  opacity: 0;
+  transition: clip-path 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.3s ease-out;
+  transform: translateX(-50%);
+}
+.light-on .title-underline {
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
+}
+.about-me-box {
+  position: absolute;
+  top: calc(100% + 30px);
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  width: 80%;
+  max-width: 600px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 10px;
+  padding: 20px;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  max-height: 70vh; 
+  overflow: visible;
+  transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  padding: 30px;
+  font-size: 1.1rem;
+  text-align: left;
+  text-align: justify;
+}
+.light-on .about-me-box {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+.about-me-box p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #fff;
+  margin: 0;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  margin-bottom: 15px;
+}
+.about-me-box em {
+  font-style: normal;
+  font-size: 1.2em;
+  vertical-align: middle;
+}
+.blinking-cursor {
+  font-weight: 100;
+  font-size: 1.1em;
+  color: #fff;
+  animation: blink 0.7s infinite;
+}
+@keyframes blink {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+.about-me-box:hover {
+  transform: translateX(-50%) translateY(-5px) scale(1.05);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+}
+.highlight {
+  color: #FFD700;
+  font-weight: bold;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.about-me-box p {
+  opacity: 0;
+}
+.about-me-box.visible p {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+.fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+.about-me-box p span {
+  display: inline;
+  transition: none;
+}
+.about-me-box:hover p span {
+  transition: none;
+}
+.about-me-box p .word {
+  display: inline-block;
+  transition: transform 0.5s cubic-bezier(0.5, -0.5, 0.5, 1.5);
+}
+.about-me-box p .word.exploded {
+  transform: translate(var(--x), var(--y));
+  transition: transform 0.5s cubic-bezier(0.5, -0.5, 0.5, 1.5);
+  transition-delay: var(--delay);
+}
+.about-me-box p .word.exploded {
+  animation: float 4s ease-in-out infinite;
+  animation-delay: calc(var(--delay) * -1s);
+}
+
