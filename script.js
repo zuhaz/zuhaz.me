@@ -207,44 +207,6 @@ function toggleTorch() {
     }
     tooltip.classList.add("visible");
 }
-// Add these new functions
-function addScatterEffect(element) {
-  const text = element.querySelector('p');
-  const words = ABOUT_ME_TEXT.match(/\S+|\s+/g);
-  text.innerHTML = words.map(word => `<span class="word">${word}</span>`).join('');
-  const wordSpans = text.querySelectorAll('.word');
-  
-  let hasScattered = false;
-
-  element.addEventListener('mouseenter', () => {
-    if (!hasScattered) scatterWords();
-  });
-  element.addEventListener('mouseleave', resetWords);
-  
-  function scatterWords() {
-    hasScattered = true;
-    wordSpans.forEach((span, index) => {
-      if (span.textContent.trim() !== '') {
-        const angle = (index / wordSpans.length) * Math.PI * 2;
-        const distance = 150 + Math.random() * 200;
-        const x = Math.cos(angle) * distance;
-        const y = Math.sin(angle) * distance;
-        span.style.setProperty('--x', `${x}px`);
-        span.style.setProperty('--y', `${y}px`);
-        span.style.setProperty('--delay', `${index * 0.02}s`);
-        span.classList.add('scattered');
-      }
-    });
-  }
-  
-  function resetWords() {
-    wordSpans.forEach(span => {
-      span.style.setProperty('--delay', '0s');
-      span.classList.remove('scattered');
-      span.classList.add('returning');
-    });
-  }
-}
 
 // Add this function to create spans for each character
 function wrapWordsInSpans(element) {
@@ -336,7 +298,7 @@ function startFloating(word, index, totalWords) {
         
         // Create chaotic movement
         const x = baseX + Math.sin(time * speedX + phaseOffset) * 60;
-        const y = baseY + Math.cos(time * speedY + phaseOffset) * 80;
+        const y = baseY + Math.cos(time * speedY + phaseOffset-2) * 60;
 
         word.style.transform = `translate(${x}px, ${y}px)`;
         requestAnimationFrame(animate);
